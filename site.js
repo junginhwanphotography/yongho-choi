@@ -60,6 +60,26 @@
     document.body.classList.remove("nav-overlay-open");
   }
 
+  function placePanel(item) {
+    const panel = item.querySelector(".nav-panel");
+    if (!panel) return;
+    panel.style.left = "50%";
+    panel.style.right = "auto";
+    panel.style.transform = "translateX(-50%)";
+    const rect = panel.getBoundingClientRect();
+    const margin = 10;
+    let dx = 0;
+    if (rect.right > window.innerWidth - margin) {
+      dx -= rect.right - (window.innerWidth - margin);
+    }
+    if (rect.left + dx < margin) {
+      dx += margin - (rect.left + dx);
+    }
+    panel.style.transform = dx
+      ? "translateX(calc(-50% + " + dx + "px))"
+      : "translateX(-50%)";
+  }
+
   function bindMenus(nav) {
     const items = nav.querySelectorAll(".nav-item");
     let closeTimer = 0;
@@ -68,6 +88,7 @@
       window.clearTimeout(closeTimer);
       items.forEach((el) => el.classList.toggle("is-open", el === item));
       document.body.classList.add("nav-overlay-open");
+      requestAnimationFrame(() => placePanel(item));
     };
 
     const scheduleClose = () => {

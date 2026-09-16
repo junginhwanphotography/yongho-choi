@@ -8,6 +8,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -115,7 +116,7 @@ button {
   z-index: 50;
   min-width: 13.5rem;
   width: max-content;
-  max-width: min(22rem, 80vw);
+  max-width: min(22rem, calc(100vw - 1.5rem));
   max-height: min(70vh, 36rem);
   overflow-y: auto;
   padding: 0.45rem 1.15rem 0.85rem;
@@ -320,10 +321,10 @@ main {
   }
 
   .nav-panel {
-    left: 0;
-    transform: none;
-    min-width: 12rem;
-    max-width: min(20rem, 88vw);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 7.5rem;
+    max-width: calc(100vw - 1.5rem);
   }
 
   .nav-panel a {
