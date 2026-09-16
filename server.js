@@ -16,6 +16,7 @@ const MIME_TYPES = {
   ".png": "image/png",
   ".gif": "image/gif",
   ".webp": "image/webp",
+  ".txt": "text/plain; charset=utf-8",
 };
 
 const server = http.createServer((req, res) => {

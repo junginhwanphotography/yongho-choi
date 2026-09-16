@@ -1,0 +1,10 @@
+{
+  "background": null,
+  "images": [
+    {
+      "src": "home/featured.jpg",
+      "alt": "featured"
+    }
+  ],
+  "featured": "featured.jpg"
+}
